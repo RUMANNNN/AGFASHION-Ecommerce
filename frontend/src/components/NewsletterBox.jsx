@@ -1,0 +1,4 @@
+import React,{useState} from 'react'
+import {toast} from 'react-toastify'
+const NewsletterBox=()=>{const[email,setEmail]=useState('');const submit=e=>{e.preventDefault();localStorage.setItem('forever_newsletter',email);toast.success('You are subscribed!');setEmail('')};return <div className="my-20 text-center bg-gray-50 p-10 sm:p-14"><p className="text-2xl font-medium">Get 20% off your first order</p><p className="text-gray-500 mt-2">Join the AGFASHION list for new drops, offers and styling ideas.</p><form onSubmit={submit} className="max-w-xl mx-auto flex mt-7 border bg-white"><input required type="email" value={email} onChange={e=>setEmail(e.target.value)} className="flex-1 px-4 outline-none" placeholder="Your email address"/><button className="bg-black text-white px-6 sm:px-10 py-4 text-xs tracking-wider">SUBSCRIBE</button></form></div>}
+export default NewsletterBox
