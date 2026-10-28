@@ -2,4 +2,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{font-family:Outfit,sans-serif;box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:#171717;background:#fff}a.active{color:#000}a.active hr{display:block}.prata-regular{font-family:Prata,serif;font-weight:400}button,input,select,textarea{font:inherit}button{cursor:pointer}::-webkit-scrollbar{width:7px}::-webkit-scrollbar-thumb{background:#c9c9c9;border-radius:10px}@media(max-width:640px){a.active{background:#000;color:#fff}}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: #171717; background: #fff; font-family: Outfit, sans-serif; min-width: 320px; }
+img, video, canvas, svg { max-width: 100%; }
+img { height: auto; }
+a.active { color: #000; }
+a.active hr { display: block; }
+.prata-regular { font-family: Prata, serif; font-weight: 400; }
+button, input, select, textarea { font: inherit; max-width: 100%; }
+button { cursor: pointer; }
+input, select, textarea { min-width: 0; }
+#root { width: 100%; overflow-x: clip; }
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-thumb { background: #c9c9c9; border-radius: 10px; }
+
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  a.active { background: #000; color: #fff; }
+  button { min-height: 40px; }
+  input, select, textarea { font-size: 16px; }
+  .grid { min-width: 0; }
+  table { display: block; max-width: 100%; overflow-x: auto; }
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+img, video, canvas, svg {
+  max-width: 100%;
+}
+button, input, select, textarea {
+  font: inherit;
+}
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+input, select, textarea {
+  min-width: 0;
+  max-width: 100%;
+}
+@media (max-width: 639px) {
+  main, footer, header {
+    max-width: 100%;
+  }
+  .grid {
+    min-width: 0;
+  }
+  /* Keep long labels and product names inside the viewport. */
+  h1, h2, h3, p, a, button, label {
+    overflow-wrap: anywhere;
+  }
+  /* Improve tap targets on small screens. */
+  button, input[type="submit"], input[type="button"] {
+    min-height: 40px;
+  }
+  /* Avoid oversized hero images on phones. */
+  .hero-image, .hero img {
+    min-height: 0 !important;
+    max-height: 55vh;
+    object-fit: cover;
+  }
+  /* Prevent admin product rows/forms from overflowing horizontally. */
+  form, table, [class*="grid-cols-"] {
+    min-width: 0;
+  }
+}

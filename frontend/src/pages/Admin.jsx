@@ -53,6 +53,12 @@ const Admin = () => {
   }
 
   const remove = id => {
+    // Keep a deletion record so a deleted starter/demo product is not restored
+    // by the seed-product fallback on a later refresh in this same browser.
+    const deletedIds = JSON.parse(localStorage.getItem('agfashion_deleted_product_ids') || '[]')
+    if (!deletedIds.includes(id)) {
+      localStorage.setItem('agfashion_deleted_product_ids', JSON.stringify([...deletedIds, id]))
+    }
     const next = products.filter(product => product._id !== id)
     setProducts(next)
     localStorage.setItem('agfashion_products', JSON.stringify(next))
